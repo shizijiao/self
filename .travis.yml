@@ -1,0 +1,27 @@
+sudo: required
+
+language: node_js
+
+services:
+  - docker
+
+node_js:
+  - "8"
+
+cache: yarn
+
+env:
+  global:
+  - PROJECT="self"
+  - ROLE="App"
+  - PACKAGE_VERSION="v2.0.${TRAVIS_BUILD_NUMBER}"
+  - DOCKER_NS="se-rem-test"
+
+before_script:
+  - export ARTIFACT_NAME="${PROJECT}-${ROLE}-${TRAVIS_BRANCH}-${PACKAGE_VERSION}.zip"
+  - export TAG=`echo "$PROJECT-$ROLE:$TRAVIS_BRANCH-$PACKAGE_VERSION" | tr '[:upper:]' '[:lower:]'`
+  - export TAG_LATEST=`echo "$PROJECT-$ROLE:$TRAVIS_BRANCH-latest" | tr '[:upper:]' '[:lower:]'`
+  - export REMOTE_TAG=$DOCKER_REGISTRY_SWR/$DOCKER_NS/$TAG
+  - export REMOTE_TAG_LATEST=$DOCKER_REGISTRY_SWR/$DOCKER_NS/$TAG_LATEST
+
+
