@@ -17,9 +17,9 @@ env:
   - PACKAGE_VERSION="v1.0.${TRAVIS_BUILD_NUMBER}"
 
 script:
-  - docker build -t $TAG .
+  - docker build -t selfz .
 before_deploy:
   - docker login -u="nvlih" -p="chunchun19"
-  - docker tag $(docker images $TAG -q)
+  - docker tag $(docker images selfz -q)
   - docker image ls
 
