@@ -22,4 +22,8 @@ before_deploy:
   - docker login -u="nvlih" -p="chunchun19"
   - docker tag $(docker images selfz -q)
   - docker image ls
-
+deploy:
+  - provider: script
+    skip_cleanup: true
+    on:
+      all_branches: true
