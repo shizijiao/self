@@ -20,10 +20,12 @@ script:
   - docker build -t selfz .
 before_deploy:
   - docker login -u="nvlih" -p="chunchun19"
-  - docker tag $(docker images selfz -q)
+  - docker tag selfz nvlih/selfz:latest
   - docker image ls
 deploy:
   - provider: script
     skip_cleanup: true
     on:
       all_branches: true
+    script:
+      docker push nvlih/selfz:latest
