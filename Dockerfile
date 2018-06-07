@@ -10,4 +10,4 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD node app/bin/www
+#CMD node app/bin/www
