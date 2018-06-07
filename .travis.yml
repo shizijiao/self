@@ -16,7 +16,7 @@ env:
   - ROLE="App"
   - PACKAGE_VERSION="v1.0.${TRAVIS_BUILD_NUMBER}"
 
-before_install:
+install:
   - npm install newman  -g
 
 script:
