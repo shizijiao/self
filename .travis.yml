@@ -16,6 +16,9 @@ env:
   - ROLE="App"
   - PACKAGE_VERSION="v1.0.${TRAVIS_BUILD_NUMBER}"
 
+before_install:
+  - npm install newman  -g
+
 script:
   - docker build -t selfz .
 before_deploy:
